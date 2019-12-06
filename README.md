@@ -22,4 +22,10 @@ Se puede acceder localmente al proyecto, ingresando a tu [localhost](http://loca
 
 ### CONFIGURACIÓN DE CACHE:
 
-Se puede modificar el tiempo que se mantienen cacheadas las llamadas modificando el valor del parámetro **app.swapi_cache_ttl** que se encuentra en el fichero **config/services.yaml**
+Se puede modificar el tiempo que se mantienen cacheadas las llamadas modificando el valor del parámetro **$cacheTTL** que se encuentra en el fichero **config/services.yaml**
+
+```bash
+App\Service\SwapiService:
+        arguments:
+            $cacheTTL: 300 # Time in seconds that requests are cached
+```
