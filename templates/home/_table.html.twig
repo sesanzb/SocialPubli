@@ -1,0 +1,45 @@
+{# templates/swapi/_table.html.twig #}
+<div class="container">
+{% if response.count %}
+    <nav>
+        <ul class="pagination">
+          <li class="page-item {% if not response.previous %} disabled {% endif %}">
+            <a class="page-link prev" href="{{ parse_url(response.previous,'query') }}">Previous</a>
+          </li>
+          <li class="page-item {% if not response.next %} disabled {% endif %}">
+            <a class="page-link next" href="{{ parse_url(response.next,'query') }}">Next</a>
+          </li>
+        </ul>
+    </nav>
+    <div class="table-responsive" id="mydatatable-container">    
+        <table class="table table-hover w-50"
+            <thead>
+                <tr>
+                    {% for property_name in response.results[0]|keys %}
+                    <th>{{ property_name }}</th>
+                {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+            {% for person in response.results %}
+                <tr>
+                {% for property in person %}
+                    <td>
+                    {% if property is iterable %}
+                        <ul>
+                        {% for value in property %}
+                            <li>{{ value }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        {{ property }}
+                    {% endif %}
+                    </td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,25 @@
+{# templates/swapi/index.html.twig #}
+{% extends 'base.html.twig' %} 
+
+{% block title %}May the force be with you!{% endblock %}
+
+{% block body %} 
+    <h1 class="title"> STAR WARS CHARACTERS </h1>
+    {{ include('home/_table.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+
+<script>
+    $(document).on('click','a',function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        var query = $(this).attr('href');
+        if (query) {
+            $.post( "/?"+$(this).attr('href'), function( data ) {
+                $( ".container" ).html( data );
+            });
+        }
+    });
+</script>
+{% endblock %}
