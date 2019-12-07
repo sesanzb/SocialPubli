@@ -33,7 +33,7 @@ $ composer install
 Dentro de la raíz del proyecto, iniciar el servidor web interno de PHP:
 
 ```bash
-$ php bin/console server:start
+$ symfony server:start
 ```
 Se puede acceder localmente al proyecto, ingresando a tu [localhost](http://localhost:8000/users).
 
